@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+:root {
+  /* Aviation-themed color palette */
+  --background: #ffffff;
+  --foreground: #1e293b;
+  
+  /* Primary Aviation Colors */
+  --sky-blue: #0ea5e9;
+  --deep-blue: #1e40af;
+  --aviation-teal: #0d9488;
+  --ocean-teal: #0f766e;
+  --cloud-white: #f8fafc;
+  --steel-gray: #64748b;
+  --charcoal: #334155;
+  
+  /* Accent Colors */
+  --sunset-orange: #f97316;
+  --golden-yellow: #eab308;
+  --success-green: #059669;
+  --warning-amber: #d97706;
+  --danger-red: #dc2626;
+  
+  /* Neutral Grays */
+  --light-gray: #f1f5f9;
+  --medium-gray: #94a3b8;
+  --dark-gray: #475569;
+  
+  /* Gradients */
+  --sky-gradient: linear-gradient(135deg, #0ea5e9 0%, #0d9488 100%);
+  --aviation-gradient: linear-gradient(135deg, #1e40af 0%, #0ea5e9 50%, #0d9488 100%);
+  --sunset-gradient: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+}
+
+@theme inline {
+  /* Base colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Aviation Primary Colors */
+  --color-sky-blue: var(--sky-blue);
+  --color-deep-blue: var(--deep-blue);
+  --color-aviation-teal: var(--aviation-teal);
+  --color-ocean-teal: var(--ocean-teal);
+  --color-cloud-white: var(--cloud-white);
+  --color-steel-gray: var(--steel-gray);
+  --color-charcoal: var(--charcoal);
+  
+  /* Accent Colors */
+  --color-sunset-orange: var(--sunset-orange);
+  --color-golden-yellow: var(--golden-yellow);
+  --color-success-green: var(--success-green);
+  --color-warning-amber: var(--warning-amber);
+  --color-danger-red: var(--danger-red);
+  
+  /* Neutral Colors */
+  --color-light-gray: var(--light-gray);
+  --color-medium-gray: var(--medium-gray);
+  --color-dark-gray: var(--dark-gray);
+  
+  /* Extended Teal Palette */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
+  
+  /* Extended Blue Palette */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+  
+  /* Extended Sky Palette */
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+  --color-sky-700: #0369a1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0c4a6e;
+  --color-sky-950: #082f49;
+  
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --cloud-white: #1e293b;
+    --light-gray: #334155;
+    --medium-gray: #64748b;
+    --dark-gray: #94a3b8;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Custom utility classes for aviation theme */
+.bg-aviation-gradient {
+  background: var(--aviation-gradient);
+}
+
+.bg-sky-gradient {
+  background: var(--sky-gradient);
+}
+
+.bg-sunset-gradient {
+  background: var(--sunset-gradient);
+}
+
+.text-aviation-teal {
+  color: var(--aviation-teal);
+}
+
+.text-sky-blue {
+  color: var(--sky-blue);
+}
+
+.text-deep-blue {
+  color: var(--deep-blue);
+}
+
+.border-aviation-teal {
+  border-color: var(--aviation-teal);
+}
+
+.border-sky-blue {
+  border-color: var(--sky-blue);
+}
+
+/* Aviation-themed shadows */
+.shadow-aviation {
+  box-shadow: 0 10px 25px -3px rgba(14, 165, 233, 0.1), 0 4px 6px -2px rgba(13, 148, 136, 0.05);
+}
+
+.shadow-teal {
+  box-shadow: 0 10px 25px -3px rgba(13, 148, 136, 0.1), 0 4px 6px -2px rgba(15, 118, 110, 0.05);
+}
+
+/* Smooth transitions for interactive elements */
+.transition-aviation {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom button styles */
+.btn-aviation-primary {
+  background: var(--aviation-gradient);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-aviation-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(14, 165, 233, 0.3);
+}
+
+.btn-aviation-secondary {
+  background: transparent;
+  color: var(--aviation-teal);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: 2px solid var(--aviation-teal);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-aviation-secondary:hover {
+  background: var(--aviation-teal);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Navbar Animations */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(13, 148, 136, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(13, 148, 136, 0.8), 0 0 30px rgba(13, 148, 136, 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Navbar specific styles */
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-item-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.nav-item-hover:hover::before {
+  left: 100%;
+}
+
+/* Logo animations */
+.logo-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.logo-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Mobile menu animations */
+.mobile-menu-item {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aviation-teal), var(--sky-blue));
+  transform-origin: left;
+  z-index: 9999;
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hover effects for navigation items */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--aviation-gradient);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+/* Button hover effects */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-hover-effect:hover::before {
+  left: 100%;
+}
+
+/* Responsive animations */
+@media (max-width: 1024px) {
+  .mobile-menu-enter {
+    animation: slideInFromRight 0.3s ease-out;
+  }
+  
+  .mobile-menu-exit {
+    animation: slideInFromRight 0.3s ease-out reverse;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aviation-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ocean-teal);
+}
