@@ -53,7 +53,7 @@ export default function Footer() {
                   <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
               </div>
-              <span className="text-2xl font-bold">Aviation Pro</span>
+              <span className="text-2xl font-bold">Axios Aviation</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Elevating aviation businesses through strategic marketing excellence and innovative solutions.
@@ -102,7 +102,7 @@ export default function Footer() {
         
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Aviation Pro. All rights reserved. Soaring to new heights together.</p>
+          <p>&copy; 2024 Axios Aviation. All rights reserved. Soaring to new heights together.</p>
         </div>
       </div>
     </footer>

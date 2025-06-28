@@ -8,25 +8,71 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('home');
 
+  const navItems = [
+    { id: 'home', label: 'Home', href: '#home' },
+    { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
+    { id: 'services', label: 'Services', href: '#services' },
+    { id: 'about', label: 'About', href: '#about' },
+    { id: 'contact', label: 'Contact', href: '#contact' },
+  ];
 
-  // Handle scroll effect
+  // Handle scroll effect and scroll spy
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
       setScrolled(isScrolled);
+
+      // Scroll spy functionality
+      const sections = [];
+      navItems.forEach(item => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          sections.push({
+            id: item.id,
+            element: element,
+            offsetTop: element.offsetTop,
+            offsetHeight: element.offsetHeight
+          });
+        }
+      });
+
+      if (sections.length === 0) return;
+
+      const scrollPosition = window.scrollY + 120; // Offset for navbar height
+      let currentSection = sections[0].id; // Default to first section
+
+      // Find the current section based on scroll position
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        // Check if we're in this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section.id;
+        }
+        // Special case for last section
+        else if (index === sections.length - 1 && scrollPosition >= sectionTop) {
+          currentSection = section.id;
+        }
+      });
+
+      // Update active item only if it changed
+      if (currentSection !== activeItem) {
+        setActiveItem(currentSection);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { id: 'home', label: 'Home', href: '#home' },
-    { id: 'services', label: 'Services', href: '#services' },
-    { id: 'about', label: 'About', href: '#about' },
-    { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
-    { id: 'contact', label: 'Contact', href: '#contact' },
-  ];
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check after a short delay to ensure DOM is ready
+    const timer = setTimeout(handleScroll, 100);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, [activeItem]);
 
   // Simple smooth scroll function
   const scrollToSection = (targetId) => {
@@ -69,6 +115,24 @@ export default function Navbar() {
                   {/* Orbiting Ring */}
                   <div className="absolute inset-0 border-2 border-aviation-teal/30 rounded-full animate-spin opacity-60" style={{animationDuration: '8s'}}></div>
                   
+                  {/* Flying Airplane Animation */}
+                  <div className="absolute inset-0 animate-spin" style={{animationDuration: '6s'}}>
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2">
+                      <svg className="w-3 h-3 text-aviation-teal transform -rotate-90" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  {/* Second Flying Airplane (opposite direction) */}
+                  <div className="absolute inset-0 animate-spin opacity-70" style={{animationDuration: '10s', animationDirection: 'reverse'}}>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
+                      <svg className="w-2 h-2 text-white transform rotate-90" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  
                   {/* Pulse Ring */}
                   <div className="absolute inset-0 border border-white/40 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
@@ -79,9 +143,9 @@ export default function Navbar() {
                 <h1 className={`text-2xl font-bold transition-all duration-500 transform group-hover:scale-105 ${
                   scrolled ? 'text-charcoal' : 'text-aviation-teal'
                 }`}>
-                  <span className="inline-block transition-all duration-300 group-hover:translate-x-1">Aviation</span>
+                  <span className="inline-block transition-all duration-300 group-hover:translate-x-1">Axios</span>
                   <span className="text-aviation-teal ml-1 relative inline-block transition-all duration-300 group-hover:-translate-x-1">
-                    Pro
+                    Aviation
                     {/* Animated Underline */}
                     <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-aviation-teal group-hover:w-full transition-all duration-700 ease-out"></div>
                     {/* Floating Dot */}
@@ -91,7 +155,7 @@ export default function Navbar() {
                 <p className={`text-xs transition-all duration-500 transform group-hover:translate-x-2 ${
                   scrolled ? 'text-steel-gray' : 'text-aviation-teal/80'
                 }`}>
-                  Elevate Your Brand
+                  Soaring Beyond Limits
                 </p>
               </div>
             </div>
