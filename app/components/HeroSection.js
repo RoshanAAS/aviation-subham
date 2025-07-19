@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button, Icon } from './index';
 
 export default function HeroSection() {
@@ -11,42 +12,42 @@ export default function HeroSection() {
   const slides = [
     {
       id: 2,
-      title: "Pilot Your Future",
-      subtitle: "Professional Flight Training",
-      description: "Master the art of flight with our world-class training programs. From private pilot to commercial aviation - we'll guide your ascent.",
-      cta: "View Programs",
-      ctaSecondary: "Book Consultation",
-      bgImage: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-      gradient: "from-indigo-900/80 via-blue-800/70 to-cyan-700/60"
-    },
-    {
-      id: 1,
-      title: "Soar to New Heights",
-      subtitle: "Aviation Excellence Awaits",
-      description: "Join the elite world of aviation with cutting-edge training and career opportunities that will take your dreams to the skies.",
-      cta: "Start Your Journey",
-      ctaSecondary: "Explore Careers",
-      bgImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80",
+      title: "Reliable Air Cargo and Logistics Solutions",
+      subtitle: "Global Logistics",
+      description: "Trusted by defence, aerospace and industrial clients for fast, secure and compliant deliveries worldwide",
+      cta: "Request a Quote",
+      ctaSecondary: "Learn More",
+      bgImage: "hero-2.jpeg",
       gradient: "from-blue-900/80 via-sky-800/70 to-teal-700/60"
     },
     {
+      id: 1,
+      title: "Reliable Air Cargo and Logistics Solutions",
+      subtitle: "Air Cargo Excellence",
+      description: "Trusted by defence, aerospace and industrial clients for fast, secure and compliant deliveries worldwide",
+      cta: "Request a Quote",
+      ctaSecondary: "Our Services",
+      bgImage: "hero-1.jpeg",
+      gradient: "from-indigo-900/80 via-blue-800/70 to-cyan-700/60"
+    },
+    {
       id: 3,
-      title: "Aviation Careers",
-      subtitle: "Your Sky-High Opportunity",
-      description: "Discover exciting career paths in aviation. From pilots to engineers, air traffic controllers to aviation managers - find your calling.",
-      cta: "Browse Jobs",
-      ctaSecondary: "Career Guide",
-      bgImage: "https://images.unsplash.com/photo-1728839470502-59edad620f96?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "Reliable Air Cargo and Logistics Solutions",
+      subtitle: "Defence & Aerospace",
+      description: "Trusted by defence, aerospace and industrial clients for fast, secure and compliant deliveries worldwide",
+      cta: "Request a Quote",
+      ctaSecondary: "Contact Us",
+      bgImage: "hero-3.jpeg",
       gradient: "from-slate-900/80 via-blue-800/70 to-teal-700/60"
     },
     {
       id: 4,
-      title: "Advanced Aviation",
-      subtitle: "Next-Gen Technology",
-      description: "Experience the future of flight with state-of-the-art simulators, modern aircraft, and innovative training methodologies.",
-      cta: "See Technology",
-      ctaSecondary: "Schedule Tour",
-      bgImage: "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      title: "Reliable Air Cargo and Logistics Solutions",
+      subtitle: "Industrial Logistics",
+      description: "Trusted by defence, aerospace and industrial clients for fast, secure and compliant deliveries worldwide",
+      cta: "Request a Quote",
+      ctaSecondary: "Our Network",
+      bgImage: "hero-4.jpeg",
       gradient: "from-gray-900/80 via-slate-800/70 to-blue-700/60"
     }
   ];
@@ -78,9 +79,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative overflow-hidden h-[85vh]">
+    <section id="home" className="relative overflow-hidden h-[90vh]">
       {/* Carousel Container */}
-      <div className="relative w-full h-[85vh]">
+      <div className="relative w-full h-[90vh]">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -90,14 +91,24 @@ export default function HeroSection() {
                 : 'opacity-0 scale-105'
             }`}
           >
-            {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${slide.bgImage})` }}
-            />
+            {/* Background Image using Next.js Image for better handling */}
+            <div className="absolute inset-0 overflow-hidden">
+              <Image
+                src={`/${slide.bgImage}`}
+                alt={slide.subtitle}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                quality={90}
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center'
+                }}
+              />
+            </div>
             
-            {/* Light Gradient Overlay - Only at bottom for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            {/* Enhanced Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
             
             {/* Premium Brand Logo */}
             {/* <div className="absolute top-8 left-8 z-20">
@@ -107,33 +118,41 @@ export default function HeroSection() {
               </div>
             </div> */}
             
-            {/* Content - Positioned at bottom */}
-            <div className="relative z-10 flex items-end justify-center h-full pb-16">
+            {/* Content - Centered for better visibility */}
+            <div className="relative z-10 flex items-center justify-center h-full">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                {/* Compact Main Content */}
-                <div className="space-y-4 animate-fadeInUp">
-                  {/* <h2 className="text-sm md:text-base font-semibold text-aviation-teal uppercase tracking-wider">
-                    {slide.subtitle}
-                  </h2> */}
+                {/* Enhanced Main Content with better spacing */}
+                <div className="space-y-6 animate-fadeInUp">
+                  <div className="mb-4">
+                    <h2 className="text-sm font-bold text-white uppercase tracking-wider px-4 py-1.5 bg-white/10 inline-block rounded-md border-2 border-white/70 shadow-md backdrop-blur-sm">
+                      {slide.subtitle}
+                    </h2>
+                  </div>
                   
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight tracking-normal">
                     {slide.title}
                   </h1>
                   
-                  <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed tracking-normal font-medium mt-4 mb-6">
                     {slide.description}
                   </p>
                 </div>
 
-                {/* Compact CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
-                  <Button variant="primary" className="bg-aviation-teal hover:bg-aviation-teal/90 text-white px-6 py-3 text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300">
+                {/* Enhanced CTA Buttons with better spacing */}
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-10 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
+                  <Button 
+                    variant="primary" 
+                    className="bg-aviation-teal hover:bg-aviation-teal/90 text-white px-10 py-5 text-lg font-bold rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl"
+                  >
                     <span>{slide.cta}</span>
-                    <Icon name="arrow" className="w-4 h-4 ml-2" />
+                    <Icon name="arrow" className="w-5 h-5 ml-3" />
                   </Button>
                   
-                  <Button variant="secondary" className="bg-aviation-teal hover:bg-aviation-teal/90 text-white px-6 py-3 text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300">
-                    <Icon name="play" className="w-4 h-4 mr-2" />
+                  <Button 
+                    variant="secondary" 
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/20 px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Icon name="shield" className="w-5 h-5 mr-3" />
                     <span>{slide.ctaSecondary}</span>
                   </Button>
                 </div>
@@ -143,42 +162,42 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Navigation Controls */}
+      {/* Enhanced Navigation Controls */}
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
           onClick={prevSlide}
-          className="ml-4 p-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group"
+          className="ml-6 p-4 bg-white/10 backdrop-blur-sm hover:bg-aviation-teal/80 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group border border-white/20"
         >
-          <Icon name="chevron-left" className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+          <Icon name="chevron-left" className="w-7 h-7 group-hover:-translate-x-1 transition-transform duration-300" />
         </button>
       </div>
 
       <div className="absolute inset-y-0 right-0 flex items-center">
         <button
           onClick={nextSlide}
-          className="mr-4 p-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group"
+          className="mr-6 p-4 bg-white/10 backdrop-blur-sm hover:bg-aviation-teal/80 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 group border border-white/20"
         >
-          <Icon name="chevron-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+          <Icon name="chevron-right" className="w-7 h-7 group-hover:translate-x-1 transition-transform duration-300" />
         </button>
       </div>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      {/* Enhanced Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-4 h-4 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? 'bg-aviation-teal shadow-lg scale-125'
-                : 'bg-white/50 hover:bg-white/70 hover:scale-110'
+                ? 'bg-aviation-teal shadow-lg scale-125 border border-white/50'
+                : 'bg-white/40 hover:bg-white/60 hover:scale-110 border border-white/30'
             }`}
           />
         ))}
       </div>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+      {/* Enhanced Progress Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-2 bg-black/30">
         <div 
           className="h-full bg-aviation-teal transition-all duration-300 ease-linear"
           style={{ 
@@ -187,18 +206,18 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Compact Floating Stats */}
-      {/* <div className="absolute bottom-24 left-8 hidden lg:block">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-white shadow-xl">
-          <div className="text-2xl font-bold text-aviation-teal">500+</div>
-          <div className="text-xs opacity-90">Pilots Trained</div>
+      {/* Enhanced Floating Stats */}
+      <div className="absolute bottom-16 left-8 hidden lg:flex">
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-white shadow-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+          <div className="text-3xl font-bold text-aviation-teal">100+</div>
+          <div className="text-sm opacity-90 font-medium mt-1">Global Destinations</div>
         </div>
-      </div> */}
+      </div>
 
-      <div className="absolute bottom-24 right-8 hidden lg:block">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-white shadow-xl">
-          <div className="text-2xl font-bold text-aviation-teal">15+</div>
-          <div className="text-xs opacity-90">Years Experience</div>
+      <div className="absolute bottom-16 right-8 hidden lg:flex">
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-white shadow-xl border border-white/10 hover:bg-white/20 transition-all duration-300">
+          <div className="text-3xl font-bold text-aviation-teal">25+</div>
+          <div className="text-sm opacity-90 font-medium mt-1">Years Experience</div>
         </div>
       </div>
     </section>

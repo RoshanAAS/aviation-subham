@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import ScrollProgress from './ScrollProgress';
 
 export default function Navbar() {
@@ -72,7 +73,7 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
     };
-  }, [activeItem]);
+  }, [activeItem, navItems]);
 
   // Simple smooth scroll function
   const scrollToSection = (targetId) => {
@@ -100,62 +101,31 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             
-            {/* Logo Section with Animation */}
-            <div className="flex items-center group cursor-pointer">
+            {/* Simple Logo Section */}
+            <div className="flex items-center cursor-pointer">
               <div className="relative">
-                {/* Floating Glow Effect */}
-                <div className="absolute inset-0 bg-aviation-gradient rounded-full opacity-20 animate-pulse blur-md"></div>
-                
-                {/* Logo Icon */}
-                <div className="relative w-12 h-12 bg-aviation-gradient rounded-full flex items-center justify-center shadow-aviation transform transition-all duration-700 hover:rotate-12 hover:scale-110 hover:shadow-2xl">
-                  <svg className="w-6 h-6 text-white transform transition-all duration-700 hover:scale-125 hover:rotate-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                  </svg>
-                  
-                  {/* Orbiting Ring */}
-                  <div className="absolute inset-0 border-2 border-aviation-teal/30 rounded-full animate-spin opacity-60" style={{animationDuration: '8s'}}></div>
-                  
-                  {/* Flying Airplane Animation */}
-                  <div className="absolute inset-0 animate-spin" style={{animationDuration: '6s'}}>
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2">
-                      <svg className="w-3 h-3 text-aviation-teal transform -rotate-90" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Second Flying Airplane (opposite direction) */}
-                  <div className="absolute inset-0 animate-spin opacity-70" style={{animationDuration: '10s', animationDirection: 'reverse'}}>
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
-                      <svg className="w-2 h-2 text-white transform rotate-90" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Pulse Ring */}
-                  <div className="absolute inset-0 border border-white/40 rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Simple Logo Container - No Background, Smaller Size */}
+                <div className="relative w-12 h-12 flex items-center justify-center">
+                  {/* Actual Logo Image */}
+                  <Image 
+                    src="/logo.png" 
+                    alt="Axios Aviation Logo" 
+                    width={44} 
+                    height={44}
+                    className="w-10 h-10 object-contain"
+                    priority
+                  />
                 </div>
               </div>
               
-              {/* Brand Text */}
-              <div className="ml-4">
-                <h1 className={`text-2xl font-bold transition-all duration-500 transform group-hover:scale-105 ${
-                  scrolled ? 'text-charcoal' : 'text-aviation-teal'
-                }`}>
-                  <span className="inline-block transition-all duration-300 group-hover:translate-x-1">Axios</span>
-                  <span className="text-aviation-teal ml-1 relative inline-block transition-all duration-300 group-hover:-translate-x-1">
-                    Aviation
-                    {/* Animated Underline */}
-                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-aviation-teal group-hover:w-full transition-all duration-700 ease-out"></div>
-                    {/* Floating Dot */}
-                    <div className="absolute -top-1 -right-1 w-1 h-1 bg-aviation-teal rounded-full opacity-0 group-hover:opacity-100 animate-bounce transition-opacity duration-500"></div>
-                  </span>
+              {/* Brand Text with Specific Color - Reduced Size */}
+              <div className="ml-2">
+                <h1 className="text-lg font-bold text-[#20134c]">
+                  <span>Axios</span>
+                  <span className="ml-1">Aviation</span>
                 </h1>
-                <p className={`text-xs transition-all duration-500 transform group-hover:translate-x-2 ${
-                  scrolled ? 'text-steel-gray' : 'text-aviation-teal/80'
-                }`}>
-                  Soaring Beyond Limits
+                <p className="text-[10px] text-[#20134c]">
+                  Work as reflection of our values
                 </p>
               </div>
             </div>

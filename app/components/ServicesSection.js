@@ -3,6 +3,8 @@
 import { Icon } from './index';
 import { useState, useEffect, useRef } from 'react';
 
+import Image from 'next/image';
+
 export default function ServicesSection() {
   const [visibleCards, setVisibleCards] = useState([]);
   const cardRefs = useRef([]);
@@ -35,54 +37,122 @@ export default function ServicesSection() {
   const services = [
     {
       id: 1,
-      title: "Air Freight Services",
-      subtitle: "Logistics Excellence",
-      description: "Axios Aviation is IATA approved cargo agency, having qualified DG and IATA staff. Customer need is the foremost in planning the execution of end to end logistics.",
+      title: "Air Freight Forwarding",
+      subtitle: "Global Logistics Solutions",
+      description: "Axios Aviation provides comprehensive air freight forwarding services with IATA certification, ensuring your cargo reaches its destination efficiently and securely.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       features: [
-        "Competitive freight rates",
-        "Capability and expertise in moving perishables, time sensitive & urgent shipments",
-        "Electronics, serum, apparel, leather goods, light engineering equipments",
-        "Value Added Services (Groupage services, Purchase order follow-up, Pre-alert)",
-        "Door pick-up / delivery services",
-        "Experienced in handling exhibition goods and consulate shipments",
-        "Expertise in handling Over Dimensional Cargo and Project movements through Charters"
+        "Competitive freight rates worldwide",
+        "Expertise in time-sensitive and urgent shipments",
+        "Specialized handling for various cargo types",
+        "Value-added services including groupage and pre-alerts",
+        "Door-to-door pickup and delivery",
+        "Exhibition and consulate shipment handling",
+        "Global network of trusted partners"
       ],
       gradient: "from-blue-50 to-teal-50"
     },
     {
       id: 2,
-      title: "Supply Chain Management",
-      subtitle: "Complete Freight Solutions",
-      description: "We are your complete freight management solution. When you choose Axios Aviation to manage your supply chain, you're not just getting a business partner; you're getting an extension of your company.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      title: "Air Cargo Chartering and Handling",
+      subtitle: "Specialized Cargo Solutions",
+      description: "Our air cargo chartering services provide tailored solutions for oversized, time-critical, or specialized shipments that require dedicated aircraft and expert handling.",
+      image: "https://images.unsplash.com/photo-1571086291540-b137111fa1c7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: [
-        "Dedicated team of experienced associates",
-        "Seamless integration into your daily business processes",
-        "Complete freight management solution",
-        "Extension of your company operations",
-        "Professional supply chain optimization",
-        "End-to-end logistics planning and execution",
-        "Customized solutions for your business needs"
+        "Full and part-charter solutions",
+        "Specialized aircraft selection based on cargo requirements",
+        "Handling of oversized and project cargo",
+        "Time-critical shipment management",
+        "Ground handling coordination",
+        "Load planning and optimization",
+        "24/7 operational support"
       ],
       gradient: "from-teal-50 to-sky-50"
     },
     {
       id: 3,
-      title: "Supplier Management",
-      subtitle: "Trusted Network Partners",
-      description: "Forget the headache of trying to determine which suppliers and carriers you can trust. With Axios Aviation, you can be sure that your freight is in the best care possible.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      title: "Customs Clearance",
+      subtitle: "Seamless Border Processing",
+      description: "Our customs clearance experts ensure smooth and compliant processing of your international shipments, minimizing delays and avoiding compliance issues.",
+      image: "https://images.unsplash.com/photo-1665600292329-abab212a031f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: [
-        "Extensive networks of trusted suppliers",
-        "Highest standards of service compliance",
-        "Complete visibility throughout supply chain",
-        "Reliable carrier partnerships",
-        "Quality assurance and monitoring",
-        "Risk management and mitigation",
-        "24/7 tracking and support services"
+        "Expert documentation preparation",
+        "Customs regulations compliance",
+        "Duty and tax calculation",
+        "Classification and valuation services",
+        "Customs bond processing",
+        "Import/export license assistance",
+        "Customs audit support"
       ],
       gradient: "from-sky-50 to-blue-50"
+    },
+    {
+      id: 4,
+      title: "Transportation",
+      subtitle: "Integrated Logistics Network",
+      description: "Our comprehensive transportation services ensure your cargo moves seamlessly from origin to destination with reliable tracking and timely delivery.",
+      image: "https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      features: [
+        "First and last mile delivery",
+        "Intermodal transportation solutions",
+        "Temperature-controlled transport",
+        "High-value cargo security",
+        "GPS tracking and monitoring",
+        "Scheduled and on-demand services",
+        "Specialized vehicle fleet"
+      ],
+      gradient: "from-blue-50 to-indigo-50"
+    },
+    {
+      id: 5,
+      title: "Dangerous Goods Cargo Acceptance",
+      subtitle: "Certified Hazardous Materials Handling",
+      description: "Our IATA-certified dangerous goods specialists ensure proper handling, documentation, and transportation of hazardous materials in compliance with international regulations.",
+      image: "https://images.unsplash.com/photo-1583911026662-95161686d9a6?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      features: [
+        "IATA DGR compliance expertise",
+        "Proper classification and identification",
+        "Compliant packaging and labeling",
+        "Dangerous goods declaration preparation",
+        "Staff certified in hazardous materials handling",
+        "Emergency response planning",
+        "Regulatory updates and training"
+      ],
+      gradient: "from-red-50 to-orange-50"
+    },
+    {
+      id: 6,
+      title: "Consultancy",
+      subtitle: "Expert Aviation Logistics Advice",
+      description: "Our consultancy services provide expert guidance on optimizing your supply chain, improving efficiency, and ensuring compliance with aviation logistics regulations.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      features: [
+        "Supply chain optimization",
+        "Logistics process improvement",
+        "Regulatory compliance guidance",
+        "Cost reduction strategies",
+        "Risk assessment and management",
+        "Technology implementation advice",
+        "Staff training and development"
+      ],
+      gradient: "from-purple-50 to-indigo-50"
+    },
+    {
+      id: 7,
+      title: "Hotel Accommodation",
+      subtitle: "Crew and Staff Lodging Solutions",
+      description: "We provide comprehensive hotel accommodation services for flight crews, staff, and business travelers with negotiated rates and personalized booking management.",
+      image: "https://images.unsplash.com/photo-1549294413-26f195200c16?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      features: [
+        "Global hotel network",
+        "Negotiated corporate rates",
+        "24/7 booking assistance",
+        "Crew-specific accommodation",
+        "Extended stay arrangements",
+        "Group booking management",
+        "Integrated billing and reporting"
+      ],
+      gradient: "from-amber-50 to-yellow-50"
     }
   ];
 
@@ -95,7 +165,7 @@ export default function ServicesSection() {
             Our <span className="text-aviation-teal">Services</span>
           </h2>
           <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            Professional aviation logistics solutions with IATA certification and global expertise
+            Comprehensive aviation logistics and cargo services with IATA certification and global expertise
           </p>
         </div>
 
@@ -202,7 +272,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-20">
+        {/* <div className="text-center mt-20">
           <div className="bg-gradient-to-r from-aviation-teal to-sky-600 rounded-2xl p-8 lg:p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Elevate Your Logistics?</h3>
             <p className="text-xl mb-8 opacity-90">
@@ -213,7 +283,7 @@ export default function ServicesSection() {
               <Icon name="arrow-right" className="ml-2 w-5 h-5" />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
