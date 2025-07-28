@@ -202,35 +202,56 @@ export default function QuoteDialog({ isOpen, onClose }) {
     setIsSubmitting(true);
 
     // Show loading toast
-    const loadingToast = toast.loading('Submitting your quote request...');
+    const loadingToast = toast.loading('Sending your quote request to our logistics team...');
 
     try {
-      // Simulate API call - replace with your actual backend call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Send quote request to API
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        console.log('Quote Request sent successfully:', formData);
+        
+        // Success notification
+        toast.success(
+          `🎉 Quote request sent successfully!\n📧 We'll contact you within 2 hours at ${formData.email}\n✈️ Our logistics experts are reviewing your requirements!`,
+          {
+            duration: 8000,
+            style: {
+              minWidth: '350px',
+            },
+          }
+        );
+
+        // Reset form and close dialog
+        setTimeout(() => {
+          handleClose();
+        }, 1500);
+      } else {
+        // console.log('Error sending quote request:', result);
+        throw new Error(result.message || 'Failed to send quote request');
+      }
+
+    } catch (error) {
+      console.error('Quote submission error:', error);
       
-      console.log('Quote Request:', formData);
-      
-      // Success notification
-      toast.success(
-        `Quote request submitted successfully! 🎉\nWe'll contact you within 2 hours at ${formData.email}`,
+      // Error notification
+      toast.error(
+        `❌ Failed to send quote request.\n🔄 Please check your connection and try again.\n💬 Or contact us directly at roshan555routh@gmail.com`,
         {
-          duration: 6000,
+          duration: 8000,
           style: {
             minWidth: '300px',
           },
         }
       );
-
-      // Reset form and close dialog
-      setTimeout(() => {
-        handleClose();
-      }, 1000);
-
-    } catch (error) {
-      // Error notification
-      toast.error('Failed to submit quote request. Please try again.', {
-        duration: 5000,
-      });
     } finally {
       // Dismiss loading toast
       toast.dismiss(loadingToast);

@@ -1,11 +1,106 @@
 'use client';
 
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { Icon } from './index';
 import QuoteDialog from './QuoteDialog';
 
 export default function ContactSection() {
   const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Form validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      toast.error('Please fill in all fields');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Show loading toast
+    const loadingToast = toast.loading('Sending your message to our team...');
+
+    try {
+      // Send contact message to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Success notification
+        toast.success(
+          `🎉 Message sent successfully!\n📧 We'll respond to ${formData.email} within 2 hours\n✈️ Thank you for contacting Axios Aviation Services!`,
+          {
+            duration: 8000,
+            style: {
+              minWidth: '350px',
+            },
+          }
+        );
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+
+    } catch (error) {
+      console.error('Contact submission error:', error);
+      
+      // Error notification
+      toast.error(
+        `❌ Failed to send message.\n🔄 Please check your connection and try again.\n📞 Or call us directly at +91-9717229612`,
+        {
+          duration: 8000,
+          style: {
+            minWidth: '300px',
+          },
+        }
+      );
+    } finally {
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      setIsSubmitting(false);
+    }
+  };
   
   const contactInfo = [
     {
@@ -82,50 +177,89 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-charcoal mb-6">Send Us a Message</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-aviation-teal transition-colors duration-200"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-aviation-teal transition-colors duration-200"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                  Subject <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-aviation-teal transition-colors duration-200"
                   placeholder="How can we help you?"
+                  required
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Message <span className="text-red-500">*</span>
+                </label>
                 <textarea
                   id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   rows="5"
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-aviation-teal transition-colors duration-200"
                   placeholder="Your message here..."
+                  required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-aviation-teal text-white font-semibold py-4 px-6 rounded-lg hover:bg-aviation-teal/90 transition-all duration-300 transform hover:scale-[1.02]"
+                disabled={isSubmitting}
+                className={`w-full font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform ${
+                  isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-aviation-teal hover:bg-aviation-teal/90 hover:scale-[1.02]'
+                } text-white flex items-center justify-center space-x-2`}
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending Message...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Icon name="send" className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </form>
           </div>
