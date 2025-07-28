@@ -119,7 +119,7 @@ export default function Navbar() {
               </div>
               
               {/* Brand Text with Specific Color - Reduced Size */}
-              <div className="ml-2">
+              <div className="ml-1">
                 <h1 className="text-lg font-bold text-[#20134c]">
                   <span>Axios</span>
                   <span className="ml-1">Aviation</span>
@@ -209,7 +209,7 @@ export default function Navbar() {
                   }}
                   className={`block px-6 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                     activeItem === item.id
-                      ? 'text-white bg-aviation-gradient shadow-aviation'
+                      ? 'text-white bg-aviation-teal shadow-aviation'
                       : 'text-charcoal hover:text-aviation-teal hover:bg-teal-50'
                   }`}
                   style={{
@@ -228,7 +228,7 @@ export default function Navbar() {
               
               {/* Mobile CTA */}
               <div className="pt-4 border-t border-teal-100">
-                <button className="w-full px-6 py-4 bg-aviation-gradient text-white rounded-xl font-semibold shadow-aviation transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+                <button className="w-full px-6 py-4 bg-aviation-teal hover:bg-aviation-teal/90 text-white rounded-xl font-semibold shadow-aviation transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
                   <span className="flex items-center justify-center space-x-2">
                     <span>Get Started Today</span>
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

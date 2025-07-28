@@ -1,6 +1,12 @@
+'use client';
+
+import { useState } from 'react';
 import { Icon } from './index';
+import QuoteDialog from './QuoteDialog';
 
 export default function ContactSection() {
+  const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false);
+  
   const contactInfo = [
     {
       title: "Registered Office",
@@ -132,7 +138,10 @@ export default function ContactSection() {
             Join the leading organizations who trust Axios Aviation for their critical air cargo and logistics needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-aviation-teal text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-aviation-teal transform hover:scale-105 hover:-translate-y-1">
+            <button 
+              onClick={() => setIsQuoteDialogOpen(true)}
+              className="bg-aviation-teal text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-aviation-teal transform hover:scale-105 hover:-translate-y-1"
+            >
               <span className="flex items-center justify-center space-x-3">
                 <span>Request a Quote</span>
                 <Icon name="arrow-right" className="w-5 h-5" />
@@ -147,6 +156,12 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      {/* Quote Dialog */}
+      <QuoteDialog 
+        isOpen={isQuoteDialogOpen} 
+        onClose={() => setIsQuoteDialogOpen(false)} 
+      />
     </section>
   );
 }

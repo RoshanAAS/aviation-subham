@@ -27,13 +27,13 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-6 text-lg text-charcoal leading-relaxed">
               <p>
-                Founded in 1999, Axios Aviation Services Pvt. Ltd. is a trusted name in time-critical air cargo and logistics solutions, serving the defense, aerospace, industrial, and pharmaceutical sectors.
+              Founded in 1999, Axios Aviation Services Pvt. Ltd. is a trusted name in time-critical air cargo and logistics solutions, serving the defense, aerospace, industrial, and pharmaceutical sectors.
               </p>
               <p>
-                With over 25 years of expertise, we specialize in aircraft chartering, over-dimensional cargo, defense-grade freight handling, and cold chain logistics — all executed with unmatched precision and 24/7 reliability.
+              With over 25 years of expertise, we specialize in aircraft chartering, over-dimensional cargo, defense-grade freight handling, and cold chain logistics — all executed with unmatched precision and 24/7 reliability.
               </p>
               <p>
-                Our operations are fully compliant with IATA, DGCA, and ISO standards, and we are proud to support government agencies, strategic organizations, and time-sensitive missions across the globe.
+              Our operations are fully compliant with IATA and ISO standards, and we are proud to support government agencies, strategic organizations, and time-sensitive missions across the globe.
               </p>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-6">

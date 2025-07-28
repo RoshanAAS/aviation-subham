@@ -39,7 +39,7 @@ export default function ServicesSection() {
       id: 1,
       title: "Air Freight Forwarding",
       subtitle: "Global Logistics Solutions",
-      description: "Axios Aviation provides comprehensive air freight forwarding services with IATA certification, ensuring your cargo reaches its destination efficiently and securely.",
+      description: "Axios Aviation provides comprehensive air freight forwarding services, ensuring your cargo reaches its destination efficiently and securely.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       features: [
         "Competitive freight rates worldwide",
@@ -107,16 +107,15 @@ export default function ServicesSection() {
       id: 5,
       title: "Dangerous Goods Cargo Acceptance",
       subtitle: "Certified Hazardous Materials Handling",
-      description: "Our IATA-certified dangerous goods specialists ensure proper handling, documentation, and transportation of hazardous materials in compliance with international regulations.",
+      description: "We ensure careful handling of dangerous goods by following international safety standards. From proper identification to secure packaging, we focus on every detail to move hazardous cargo safely and responsibly.",
       image: "https://images.unsplash.com/photo-1583911026662-95161686d9a6?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: [
-        "IATA DGR compliance expertise",
-        "Proper classification and identification",
-        "Compliant packaging and labeling",
-        "Dangerous goods declaration preparation",
-        "Staff certified in hazardous materials handling",
-        "Emergency response planning",
-        "Regulatory updates and training"
+        "Knowledge of Dangerous Goods Regulations (DGR)",
+        "Correct classification and identification of goods",
+        "Support with safe packaging and accurate labeling",
+        "Assistance with required documentation",
+        "Emergency response planning guidance",
+        "Regular updates on safety rules and compliance practices",
       ],
       gradient: "from-red-50 to-orange-50"
     },
@@ -137,23 +136,6 @@ export default function ServicesSection() {
       ],
       gradient: "from-purple-50 to-indigo-50"
     },
-    {
-      id: 7,
-      title: "Hotel Accommodation",
-      subtitle: "Crew and Staff Lodging Solutions",
-      description: "We provide comprehensive hotel accommodation services for flight crews, staff, and business travelers with negotiated rates and personalized booking management.",
-      image: "https://images.unsplash.com/photo-1549294413-26f195200c16?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      features: [
-        "Global hotel network",
-        "Negotiated corporate rates",
-        "24/7 booking assistance",
-        "Crew-specific accommodation",
-        "Extended stay arrangements",
-        "Group booking management",
-        "Integrated billing and reporting"
-      ],
-      gradient: "from-amber-50 to-yellow-50"
-    }
   ];
 
   return (

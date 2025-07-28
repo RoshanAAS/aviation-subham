@@ -11,32 +11,32 @@ export default function PortfolioSection() {
   const portfolioCategories = [
     {
       title: "Defence and Military Logistics",
-      description: "Specialized logistics solutions for defense and military operations, ensuring secure and timely delivery of critical equipment and supplies.",
-      image: "https://defence.in/attachments/medium-transport-aircraft-webp.869/",
+      description: "We take extra care when handling defence shipments. Our team makes sure everything is packed well, moved safely, and delivered on time with full security.",
+      image: "/Images/avaition-2.jpeg",
       icon: "shield"
     },
     {
       title: "Aerospace and Space Equipment",
-      description: "Expert handling and transportation of sensitive aerospace components and space equipment with precision and care.",
-      image: "https://images.unsplash.com/photo-1518365050014-70fe7232897f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      description: "We manage the safe transport of items used in the aerospace and space industry. Every step is planned properly so that nothing is delayed or damaged.",
+      image: "/Images/avaition-1.jpeg",
       icon: "rocket"
     },
     {
       title: "Consulates and Government Freight",
-      description: "Secure and diplomatic handling of government and consulate shipments with proper protocol and documentation.",
-      image: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      description: "We work with consulates and government offices to move their cargo safely. We handle all the paperwork and make sure deliveries are smooth and timely.",
+      image: "/Images/avaition-3.jpeg",
       icon: "building"
     },
     {
       title: "Engineering and Industrial Machinery",
-      description: "Transportation of heavy and oversized industrial machinery with specialized equipment and expert handling.",
-      image: "https://plus.unsplash.com/premium_photo-1682144891397-10b2e96cc2b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Transporting heavy and large machines needs smart planning. We make sure everything is loaded, moved, and delivered with full care and proper coordination.",
+      image: "/Images/avaition-engineering.jpeg",
       icon: "cog"
     },
     {
       title: "Pharma and Cold Chain Cargo",
-      description: "Temperature-controlled logistics for pharmaceutical products and perishable goods, maintaining integrity throughout transit.",
-      image: "https://edasglobalsupplychain.com/blog/wp-content/uploads/2020/09/air-cargo.jpg",
+      description: "For goods that need to stay cool, we offer cold chain services. We keep the right temperature from start to finish so that nothing gets spoiled or wasted.",
+      image: "/Images/avaition-4.jpeg",
       icon: "medical"
     }
   ];

@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button, Icon } from './index';
+import QuoteDialog from './QuoteDialog';
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isQuoteDialogOpen, setIsQuoteDialogOpen] = useState(false);
 
   // Aviation carousel slides with stunning content
   const slides = [
@@ -142,6 +144,7 @@ export default function HeroSection() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-10 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
                   <Button 
                     variant="primary" 
+                    onClick={() => setIsQuoteDialogOpen(true)}
                     className="bg-aviation-teal hover:bg-aviation-teal/90 text-white px-10 py-5 text-lg font-bold rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl"
                   >
                     <span>{slide.cta}</span>
@@ -220,6 +223,12 @@ export default function HeroSection() {
           <div className="text-sm opacity-90 font-medium mt-1">Years Experience</div>
         </div>
       </div>
+
+      {/* Quote Dialog */}
+      <QuoteDialog 
+        isOpen={isQuoteDialogOpen} 
+        onClose={() => setIsQuoteDialogOpen(false)} 
+      />
     </section>
   );
 }
