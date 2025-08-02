@@ -23,7 +23,6 @@ export const metadata = {
     "cold chain logistics",
     "over-dimensional cargo",
     "time-critical shipping",
-    "aerospace freight",
     "pharmaceutical logistics",
     "IATA compliant",
     "ISO certified",

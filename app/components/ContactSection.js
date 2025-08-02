@@ -118,7 +118,7 @@ export default function ContactSection() {
       details: [
         "Tel: +91-11-28031549 / 28031550",
         "Fax: +91-11-46678140",
-        "Mobile (Director – Mr. Sanjay Singh): +91-9717229612 / 9909026012"
+        "Mobile (Director – Mr. Sanjay Singh): +91-9717229612 / 9999026012"
       ],
       icon: "phone"
     },

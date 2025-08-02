@@ -16,7 +16,7 @@ export default function HeroSection() {
       id: 2,
       title: "Reliable Air Cargo and Logistics Solutions",
       subtitle: "Global Logistics",
-      description: "Trusted by defence, aerospace and industrial clients for fast, secure and compliant deliveries worldwide",
+      description: "Trusted by defence and industrial clients for fast, secure and compliant deliveries worldwide",
       cta: "Request a Quote",
       ctaSecondary: "Learn More",
       bgImage: "hero-2.jpeg",

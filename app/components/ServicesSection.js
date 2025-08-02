@@ -53,6 +53,23 @@ export default function ServicesSection() {
       gradient: "from-blue-50 to-teal-50"
     },
     {
+      id: 7,
+      title: "Permits Services",
+      subtitle: "International Flight Operations",
+      description: "Axios Aviation provides reliable permit services to support smooth international flight operations.",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      features: [
+        "Landing permits for scheduled and non-scheduled flights",
+        "Technical landing permits for refueling or crew rest",
+        "Overflying permits across controlled airspaces",
+        "Quick coordination with aviation authorities worldwide",
+        "Permit support for both cargo and passenger aircraft",
+        "24/7 permit processing support",
+        "Regulatory compliance assistance"
+      ],
+      gradient: "from-green-50 to-emerald-50"
+    },
+    {
       id: 2,
       title: "Air Cargo Chartering and Handling",
       subtitle: "Specialized Cargo Solutions",
@@ -71,7 +88,7 @@ export default function ServicesSection() {
     },
     {
       id: 3,
-      title: "Customs Clearance",
+      title: "Custom Clearance",
       subtitle: "Seamless Border Processing",
       description: "Our customs clearance experts ensure smooth and compliant processing of your international shipments, minimizing delays and avoiding compliance issues.",
       image: "https://images.unsplash.com/photo-1665600292329-abab212a031f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -146,9 +163,9 @@ export default function ServicesSection() {
           <h2 className="text-5xl font-bold text-charcoal mb-6">
             Our <span className="text-aviation-teal">Services</span>
           </h2>
-          <p className="text-xl text-steel-gray max-w-3xl mx-auto">
+          {/* <p className="text-xl text-steel-gray max-w-3xl mx-auto">
             Comprehensive aviation logistics and cargo services with IATA certification and global expertise
-          </p>
+          </p> */}
         </div>
 
         {/* Services Cards */}

@@ -104,15 +104,15 @@ export default function Navbar() {
             {/* Simple Logo Section */}
             <div className="flex items-center cursor-pointer">
               <div className="relative">
-                {/* Simple Logo Container - No Background, Smaller Size */}
-                <div className="relative w-12 h-12 flex items-center justify-center">
+                {/* Simple Logo Container - No Background, Larger Size */}
+                <div className="relative w-16 h-16 flex items-center justify-center">
                   {/* Actual Logo Image */}
                   <Image 
                     src="/logo.png" 
                     alt="Axios Aviation Logo" 
-                    width={44} 
-                    height={44}
-                    className="w-10 h-10 object-contain"
+                    width={80} 
+                    height={80}
+                    className="w-14 h-14 object-contain"
                     priority
                   />
                 </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
               
               {/* Brand Text with Specific Color - Reduced Size */}
               <div className="ml-1">
-                <h1 className="text-lg font-bold text-[#20134c]">
+                <h1 className="text-2xl font-bold text-[#20134c]">
                   <span>Axios</span>
                   <span className="ml-1">Aviation</span>
                 </h1>

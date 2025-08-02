@@ -93,7 +93,7 @@ function getServiceName(serviceId) {
   const services = {
     'air-cargo': '📦 Air Cargo Transport',
     'aircraft-charter': '✈️ Aircraft Chartering',
-    'defense-logistics': '🛡️ Defense & Aerospace Logistics',
+    'defense-logistics': '🛡️ Defense Logistics',
     'cold-chain': '❄️ Cold Chain Logistics',
     'oversized-cargo': '📏 Over-dimensional Cargo',
     'time-critical': '⏰ Time-Critical Delivery'
